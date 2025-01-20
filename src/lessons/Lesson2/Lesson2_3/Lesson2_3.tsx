@@ -1,8 +1,12 @@
-import { useFetchUser } from "./hooks/useFetchUser";
+// import { useFetchUser } from "./hooks/useFetchUser";
 
+import useSWR from "swr";
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const Lesson2_3 = () => {
   
-  const { user, loading } = useFetchUser(1);
+  // const { user, loading } = useFetchUser(1);
+
+  const{data: user, isLoading: loading} = useSWR("https://jsonplaceholder.typicode.com/users/1", fetcher);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -32,3 +36,8 @@ const Lesson2_3 = () => {
 };
 
 export default Lesson2_3;
+/*
+  * useEffect (https://ja.react.dev/reference/react/useEffect)
+  * - useSWR (https://swr.vercel.app/ja)
+  *  - データの取得とキャッシュを行う
+  */
