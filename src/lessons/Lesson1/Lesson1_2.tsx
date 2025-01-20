@@ -59,6 +59,7 @@ export default Lesson1_2;
 
 /**
  * useState (https://ja.react.dev/reference/react/useState)
+ * `const [state, setState] = useState(initialState)`
  * - スプレッド構文
  *  - オブジェクトのプロパティを更新するときは、スプレッド構文を使って新しいオブジェクトを作成する
  *  - https://ja.react.dev/learn/updating-objects-in-state
