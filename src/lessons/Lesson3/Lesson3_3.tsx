@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const Lesson3_3 = () => {
-  // useRefなしだと入力するたびにコンポーネントが再レンダリングされる
-  const [inputText, setInput] = useState("");
+  // useRefで値を保持すると入力時に再レンダリングされることはない -> パフォーマンス向上
+  // const [inputText, setInput] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
+  
   const handleClick = () => {
-    alert(inputText);
+    // alert(inputText);
+    alert(inputRef.current?.value);
   };
   console.log("rendering!");
   return (
@@ -12,8 +15,10 @@ const Lesson3_3 = () => {
       <input 
         type="text" 
         className="border-b"
-        value={inputText}
-        onChange={(e) => setInput(e.target.value)} />
+        // value={inputText}
+        // onChange={(e) => setInput(e.target.value)}
+        ref={inputRef}
+        />
       <button onClick={handleClick}>input入力値を見る</button>
     </div>
   );
